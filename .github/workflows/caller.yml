@@ -6,7 +6,7 @@ on:
 
 jobs:
   call-workflow:
-    uses: .github/workflows/reusable.yml
+    uses: .github/workflows/reusable.yml@main
     permissions:
       contents: read
       pull-requests: write
