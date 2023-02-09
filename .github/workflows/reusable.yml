@@ -17,5 +17,5 @@ jobs:
     steps:
     - name: Echo inputs
       run: echo "$inputs.config-path"
-    - name: Echo secrets
-      run: echo "$secrets.token"
+      with:
+        configuration-path: ${{ inputs.config-path }}
