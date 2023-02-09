@@ -5,6 +5,12 @@ on:
     branches: main
 
 jobs:
+  echo-shit:
+  - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+        
   call-workflow:
     uses: ./.github/workflows/reusable.yml
     permissions:

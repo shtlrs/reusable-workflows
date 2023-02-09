@@ -12,7 +12,12 @@ on:
         required: true
 
 jobs:
-  triage:
+  echo-shit:
+    - name: Dump GitHub context
+          env:
+            GITHUB_CONTEXT: ${{ toJson(github) }}
+          run: echo "$GITHUB_CONTEXT"
+  obey-caller:
     runs-on: ubuntu-latest
     steps:
     - name: Echo inputs
