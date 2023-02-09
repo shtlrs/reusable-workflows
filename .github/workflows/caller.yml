@@ -2,18 +2,11 @@ name: Caller workflow
 
 on:
   pull_request:
-    branches: main
+    branches: [main]
 
 jobs:
-  echo-shit:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
-
   call-workflow:
+    name: Invoke reusable
     uses: ./.github/workflows/reusable.yml
     permissions:
       contents: read
@@ -24,3 +17,11 @@ jobs:
     secrets:
       token: ${{ secrets.GITHUB_TOKEN }}
 
+  echo-shit:
+    name: Echo GH
+    runs-on: ubuntu-latest
+    steps:
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
