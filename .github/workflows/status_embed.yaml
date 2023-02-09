@@ -13,9 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echow
-        env:
-          WF_NAME: ${{ github.event.workflow_run.name }}
-        run: echo $WF_NAME
+        run: echo ${{ github.event.workflow_run.name }}
 
   status_embed:
     # We need to send a status embed whenever the workflow
