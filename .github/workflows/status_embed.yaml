@@ -8,6 +8,15 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  workflow_name:
+    name: Echo GH workflow name
+    runs-on: ubuntu-latest
+    steps:
+      - name: echow
+        env:
+          WF_NAME: ${{ github.event.workflow_run.name }}
+        run: echo $WF_NAME
+
   status_embed:
     # We need to send a status embed whenever the workflow
     # sequence we're running terminates. There are a number
