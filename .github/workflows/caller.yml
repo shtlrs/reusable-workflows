@@ -5,23 +5,11 @@ on:
     branches: [main]
 
 jobs:
-  call-workflow:
-    name: Invoke reusable
-    uses: ./.github/workflows/reusable.yml
+  call-status-embed:
+    name: Invoke status embed
+    uses: ./.github/workflows/status_embed.yaml
     permissions:
       contents: read
-      pull-requests: write
+      pull-requests: read
     
-    with:
-      config-path: .github/labeler.yml
-    secrets:
-      token: ${{ secrets.GITHUB_TOKEN }}
 
-  echo-shit:
-    name: Echo GH
-    runs-on: ubuntu-latest
-    steps:
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
