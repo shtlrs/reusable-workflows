@@ -16,6 +16,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Echo inputs
-      run: echo "$inputs.config-path"
-      with:
-        configuration-path: ${{ inputs.config-path }}
+      env:
+          VARS: ${{ toJson(vars) }}
+      run: echo "$VARS"
