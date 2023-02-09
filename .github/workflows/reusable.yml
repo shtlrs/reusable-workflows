@@ -17,5 +17,5 @@ jobs:
     steps:
     - name: Echo inputs
       env:
-          GCONTEXT: ${{ toJson(github) }}
-      run: echo "$GCONTEXT"
+          CFG_PATH: ${{ inputs.config-path }}
+      run: echo "$CFG_PATH"
