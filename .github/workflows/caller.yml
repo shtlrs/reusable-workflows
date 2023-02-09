@@ -12,5 +12,4 @@ jobs:
       contents: read
       pull-requests: read
     
-    with:
-      github: ${{ github }}
+

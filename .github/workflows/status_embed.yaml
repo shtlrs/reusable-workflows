@@ -7,11 +7,7 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-env:
-    github: ${{ inputs.github }}
-
 jobs:
-
   workflow_name:
     name: Echo GH workflow name
     runs-on: ubuntu-latest
