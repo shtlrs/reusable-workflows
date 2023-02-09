@@ -1,5 +1,9 @@
 name: Caller workflow
 
+
+env:
+  GH_CONTEXT: ${{ toJson(github) }}
+
 on:
   pull_request:
     branches: [main]
@@ -10,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echow
-        run: echo ${{ toJson(github) }}
+        run: echo "$GH_CONTEXT"
 
   call-status-embed:
     name: Invoke status embed
