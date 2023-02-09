@@ -5,6 +5,13 @@ on:
     branches: [main]
 
 jobs:
+  workflow_name:
+    name: Echo GH workflow name
+    runs-on: ubuntu-latest
+    steps:
+      - name: echow
+        run: echo ${{ toJson(github) }}
+
   call-status-embed:
     name: Invoke status embed
     uses: ./.github/workflows/status_embed.yaml
