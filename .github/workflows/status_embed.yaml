@@ -7,13 +7,16 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  GH_CONTEXT: ${{ toJson(github) }}
+
 jobs:
   workflow_name:
     name: Echo GH workflow name
     runs-on: ubuntu-latest
     steps:
       - name: echow
-        run: echo ${{ toJson(github) }}
+        run: echo "$GH_CONTEXT"
 
   status_embed:
     # We need to send a status embed whenever the workflow
