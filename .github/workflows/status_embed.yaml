@@ -33,11 +33,12 @@ jobs:
     #    as the sequence always terminates with one run.
     #
     # 3. If any workflow ends in failure or was cancelled.
-    if: >-
-      (env.trigger_workflow_name == 'Deploy' && github.event.workflow_run.conclusion != 'skipped') ||
-      env.trigger_event_name == 'pull_request' ||
-      github.event.workflow_run.conclusion == 'failure' ||
-      github.event.workflow_run.conclusion == 'cancelled'
+    if: env.trigger_event_name == 'pull_request'
+    #if: >-
+    #  (env.trigger_workflow_name == 'Deploy' && github.event.workflow_run.conclusion != 'skipped') ||
+    #  env.trigger_event_name == 'pull_request' ||
+    #  github.event.workflow_run.conclusion == 'failure' ||
+    #   github.event.workflow_run.conclusion == 'cancelled'
     name:  Send Status Embed to Discord
     runs-on: ubuntu-latest
 
