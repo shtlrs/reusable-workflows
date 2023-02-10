@@ -9,7 +9,7 @@ concurrency:
 
 env:
   GH_CONTEXT: ${{ toJson(github) }}
-  JOB_CONTEXT: ${{ toJson(job) }}
+  JOBS_CONTEXT: ${{ toJson(jobs) }}
   trigger_event_name: ${{ github.event_name }}
   trigger_workflow_name: ${{ github.workflow }}
 
@@ -74,7 +74,7 @@ jobs:
           webhook_token: ${{ secrets.GHA_WEBHOOK_TOKEN }}
 
           # Workflow information
-          workflow_name: $trigger_workflow_name
+          workflow_name: "$trigger_workflow_name"
           run_id: ${{ github.run_id }}
           run_number: ${{ github.run_number }}
           status: ${{ github.event.workflow_run.conclusion }}
