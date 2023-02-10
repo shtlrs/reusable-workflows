@@ -34,8 +34,8 @@ jobs:
     #
     # 3. If any workflow ends in failure or was cancelled.
     if: >-
-      (${{ trigger_workflow_name }} == 'Deploy' && github.event.workflow_run.conclusion != 'skipped') ||
-      ${{ trigger_event_name }} == 'pull_request' ||
+      (env.trigger_workflow_name == 'Deploy' && github.event.workflow_run.conclusion != 'skipped') ||
+      env.trigger_event_name == 'pull_request' ||
       github.event.workflow_run.conclusion == 'failure' ||
       github.event.workflow_run.conclusion == 'cancelled'
     name:  Send Status Embed to Discord
@@ -74,7 +74,7 @@ jobs:
           webhook_token: ${{ secrets.GHA_WEBHOOK_TOKEN }}
 
           # Workflow information
-          workflow_name: "$trigger_workflow_name"
+          workflow_name: ${{ env.trigger_workflow_name }}
           run_id: ${{ github.run_id }}
           run_number: ${{ github.run_number }}
           status: ${{ github.event.workflow_run.conclusion }}
