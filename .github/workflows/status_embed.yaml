@@ -9,6 +9,9 @@ concurrency:
 
 env:
   GH_CONTEXT: ${{ toJson(github) }}
+  JOB_CONTEXT: ${{ toJson(job) }}
+  trigger_event_name: ${{ github.event_name }}
+  trigger_workflow_name: ${{ github.workflow }}
 
 jobs:
   workflow_name:
@@ -31,8 +34,8 @@ jobs:
     #
     # 3. If any workflow ends in failure or was cancelled.
     if: >-
-      (github.event.workflow_run.name == 'Deploy' && github.event.workflow_run.conclusion != 'skipped') ||
-      github.event.workflow_run.event == 'pull_request' ||
+      (trigger_workflow_name == 'Deploy' && github.event.workflow_run.conclusion != 'skipped') ||
+      trigger_event_name == 'pull_request' ||
       github.event.workflow_run.conclusion == 'failure' ||
       github.event.workflow_run.conclusion == 'cancelled'
     name:  Send Status Embed to Discord
@@ -71,9 +74,9 @@ jobs:
           webhook_token: ${{ secrets.GHA_WEBHOOK_TOKEN }}
 
           # Workflow information
-          workflow_name: ${{ github.event.workflow_run.name }}
-          run_id: ${{ github.event.workflow_run.id }}
-          run_number: ${{ github.event.workflow_run.run_number }}
+          workflow_name: ${{ trigger_workflow_name }}
+          run_id: ${{ github.run_id }}
+          run_number: ${{ github.run_number }}
           status: ${{ github.event.workflow_run.conclusion }}
           actor: ${{ github.actor }}
           repository:  ${{ github.repository }}
