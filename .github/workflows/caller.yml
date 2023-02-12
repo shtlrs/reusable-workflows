@@ -9,13 +9,10 @@ jobs:
   github_event_path:
     runs-on: ubuntu-latest
     steps:
-      - run: a=bbb && echo $a
       - name: Store PR related data in `myawesomevariable`
-        run: myawesomevariable=$(cat $GITHUB_EVENT_PATH | jq -r '.pull_request')
+        run: (cat $GITHUB_EVENT_PATH | jq -r '.pull_request') > pull_request_payload.json
       - name: Echo values of PR data
-        run: |
-          echo $myawesomevariable
-          [ -z "$myawesomevariable" ] && exit 1
+        run: cat pull_request_payload.json
 
   #call-workflow:
     #uses: ./.github/workflows/reusable.yml
