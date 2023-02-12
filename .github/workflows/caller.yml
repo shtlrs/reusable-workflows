@@ -17,12 +17,12 @@ jobs:
       - name: echow
         run: echo "$GH_CONTEXT"
 
-  call-status-embed:
-    if: ${{ env.DEPLOY_ENABLED }}
-    name: Invoke status embed
-    uses: ./.github/workflows/status_embed.yaml
-    permissions:
-      contents: read
-      pull-requests: read
+  #call-status-embed:
+    #if: ${{ env.DEPLOY_ENABLED }}
+    #name: Invoke status embed
+    #uses: ./.github/workflows/status_embed.yaml
+    #permissions:
+      #contents: read
+      #pull-requests: read
     
 
