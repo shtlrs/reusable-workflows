@@ -13,7 +13,7 @@ jobs:
         run: echo $GITHUB_EVENT_PATH
 
   call-workflow:
-    uses: .github/workflows/reusable.yml@main
+    uses: ./.github/workflows/reusable.yml@main
     permissions:
       contents: read
       pull-requests: write
@@ -22,4 +22,3 @@ jobs:
       config-path: .github/labeler.yml
     secrets:
       token: ${{ secrets.GITHUB_TOKEN }}
-
