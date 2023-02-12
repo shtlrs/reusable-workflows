@@ -9,9 +9,7 @@ jobs:
   github_event_path:
     runs-on: ubuntu-latest
     steps:
-      - run: a=b
-      - run: echo $a
-      - run: echo $GITHUB_EVENT_PATH
+      - run: a=bbb && echo $a
       - name: Store PR related data in `myawesomevariable`
         run: myawesomevariable=$(cat $GITHUB_EVENT_PATH | jq -r '.pull_request')
       - name: Echo values of PR data
