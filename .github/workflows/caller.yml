@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       pr_author: ${{ steps.extract_pr_data.outputs.pr_author }}
-      pr_number: ${{ steps.extract_pr_data.outputs.  }}
-      pr_title: ${{ steps.extract_pr_data.outputs. }}
-      pr_source: ${{ steps.extract_pr_data.outputs. }}
+      pr_number: ${{ steps.extract_pr_data.outputs.pr_number }}
+      pr_title: ${{ steps.extract_pr_data.outputs.pr_title }}
+      pr_source: ${{ steps.extract_pr_data.outputs.pr_source }}
 
     steps:
       - id: extract_pr_data
