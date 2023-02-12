@@ -7,6 +7,9 @@ on:
       config-path:
         required: true
         type: string
+      pull-request-json:
+        required: true
+        type: string
     secrets:
       token:
         required: true
