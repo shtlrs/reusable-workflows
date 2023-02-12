@@ -12,9 +12,9 @@ jobs:
       - name: Store PR related data in `pull_request_json`
         run: pull_request_json=$(cat $GITHUB_EVENT_PATH | jq -r '.pull_request')
       - name: Echo values of PR data
-        run: | 
-        someKey=someVal
-        [ -z "$pull_request_json" ] && exit 1
+        run: |
+          someKey=someVal
+          [ -z "$pull_request_json" ] && exit 1
 
   #call-workflow:
     #uses: ./.github/workflows/reusable.yml
