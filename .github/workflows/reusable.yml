@@ -18,4 +18,4 @@ jobs:
       - name: first
         run: echo ${{ inputs.config-path }}
       - name: second
-        run: echo ${{ pull_request_json }}
+        run: echo ${{ pull-request-json }}
