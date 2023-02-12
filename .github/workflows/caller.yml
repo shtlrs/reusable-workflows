@@ -16,6 +16,7 @@ jobs:
 
     steps:
       - id: extract_pr_data
+        name: Extract pull request related data
         run: | 
           (cat $GITHUB_EVENT_PATH | jq -r '.pull_request') > pull_request_payload.json
           echo "pr_author=$(jq -r '.user.login // empty' pull_request_payload.json)" >> $GITHUB_OUTPUT
