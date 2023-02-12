@@ -13,8 +13,10 @@ jobs:
         run: PRVALVAL=$(cat $GITHUB_EVENT_PATH | jq -r '.pull_request')
       - name: Echo values of pr json
         run: cat $GITHUB_EVENT_PATH
-      - name: Echo it
-        run: echo $PRVALVAL
+      - name: Dump it
+        run: echo $PRVALVAL > test.json
+      - name: echo it
+        run: cat $test.json
 
   #call-workflow:
     #uses: ./.github/workflows/reusable.yml
