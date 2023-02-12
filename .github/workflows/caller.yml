@@ -9,10 +9,12 @@ jobs:
   github_event_path:
     runs-on: ubuntu-latest
     steps:
-      - name: Store Pr json values
+      - name: Store PR related data in `pull_request_json`
         run: pull_request_json=$(cat $GITHUB_EVENT_PATH | jq -r '.pull_request')
-      - name: Echo values of pr json
-        run: echo $pull_request_json
+      - name: Echo values of PR data
+        run: | 
+        someKey=someVal
+        [ -z "$pull_request_json" ] && exit 1
 
   #call-workflow:
     #uses: ./.github/workflows/reusable.yml
