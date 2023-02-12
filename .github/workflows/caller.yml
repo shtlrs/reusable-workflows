@@ -19,19 +19,10 @@ jobs:
         name: Extract pull request related data
         run: | 
           (cat $GITHUB_EVENT_PATH | jq -r '.pull_request') > pull_request_payload.json
-          echo $(jq -r '.user.login // empty' pull_request_payload.json)
-          echo $(jq -r '.number // empty' pull_request_payload.json)
-          echo $(jq -r '.title // empty' pull_request_payload.json)
-          echo $(jq -r '.head.label // empty' pull_request_payload.json)
-
           echo "pr_author=$(jq -r '.user.login // empty' pull_request_payload.json)" >> $GITHUB_OUTPUT
           echo "pr_number=$(jq -r '.number // empty' pull_request_payload.json)" >> $GITHUB_OUTPUT
           echo "pr_title=$(jq -r '.title // empty' pull_request_payload.json)" >> $GITHUB_OUTPUT
           echo "pr_source=$(jq -r '.head.label // empty' pull_request_payload.json)" >> $GITHUB_OUTPUT
-      - id: test
-        name: List files
-        run: ls
- 
   call-workflow:
     needs: github_event_path
     uses: ./.github/workflows/status_embed.yml
