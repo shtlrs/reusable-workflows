@@ -3,6 +3,7 @@ name: Caller workflow
 
 env:
   GH_CONTEXT: ${{ toJson(github) }}
+  DEPLOY_ENABLED: false
 
 on:
   pull_request:
@@ -17,6 +18,7 @@ jobs:
         run: echo "$GH_CONTEXT"
 
   call-status-embed:
+    if: ${{ env.DEPLOY_ENABLED }}
     name: Invoke status embed
     uses: ./.github/workflows/status_embed.yaml
     permissions:
