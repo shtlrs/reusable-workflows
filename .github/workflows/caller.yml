@@ -20,11 +20,11 @@ jobs:
       - name: Read files
         run: cat test.json
       - name: Store PR related data in `pull_request_json`
-        run: pull_request_json=$(cat $GITHUB_EVENT_PATH | jq -r '.pull_request')
+        run: prss=$(cat $GITHUB_EVENT_PATH | jq '.pull_request')
       - name: Echo values of PR data
         run: |
-          echo $pull_request_json
-          [ -z "$pull_request_json" ] && exit 1
+          echo $prss
+          [ -z "$prss" ] && exit 1
 
   #call-workflow:
     #uses: ./.github/workflows/reusable.yml
