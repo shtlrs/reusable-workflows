@@ -20,5 +20,6 @@ jobs:
     
     with:
       config-path: .github/labeler.yml
+      pull_request_json: $(cat $GITHUB_EVENT_PATH | jq '.pull_request')
     secrets:
       token: ${{ secrets.GITHUB_TOKEN }}

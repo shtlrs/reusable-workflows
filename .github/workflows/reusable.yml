@@ -15,7 +15,7 @@ jobs:
   triage:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/labeler@v4
-      with:
-        repo-token: ${{ secrets.token }}
-        configuration-path: ${{ inputs.config-path }}
+      - name: first
+        run: echo ${{ inputs.config-path }}
+      - name: second
+        run: echo ${{ pull_request_json }}
