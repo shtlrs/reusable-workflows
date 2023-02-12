@@ -23,6 +23,8 @@ jobs:
           echo "pr_number=$(jq -r '.number // empty' pull_request_payload.json)" >> $GITHUB_OUTPUT
           echo "pr_title=$(jq -r '.title // empty' pull_request_payload.json)" >> $GITHUB_OUTPUT
           echo "pr_source=$(jq -r '.head.label // empty' pull_request_payload.json)" >> $GITHUB_OUTPUT
+      - name: Try echo
+        run: echo $pr_source
  
   #call-workflow:
     #uses: ./.github/workflows/reusable.yml
@@ -31,4 +33,4 @@ jobs:
       #pull-requests: write
     
     #with:
-      #pull-request-json: $pull_request_json
+      #pr_author: $pull_request_json
