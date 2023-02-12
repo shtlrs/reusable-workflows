@@ -10,13 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Store Pr json values
-        run: PRVALVAL=$(cat $GITHUB_EVENT_PATH | jq -r '.pull_request')
+        run: pull_request_json=$(cat $GITHUB_EVENT_PATH | jq -r '.pull_request')
       - name: Echo values of pr json
-        run: cat $GITHUB_EVENT_PATH
-      - name: Dump it
-        run: echo $PRVALVAL > test.json
-      - name: echo it
-        run: cat test.json
+        run: echo $pull_request_json
 
   #call-workflow:
     #uses: ./.github/workflows/reusable.yml
@@ -25,7 +21,4 @@ jobs:
       #pull-requests: write
     
     #with:
-      #config-path: .github/labeler.yml
-      #pull-request-json: $(cat $GITHUB_EVENT_PATH | jq -r '.pull_request')
-    #secrets:
-      #token: ${{ secrets.GITHUB_TOKEN }}
+      #pull-request-json: $pull_request_json
