@@ -13,7 +13,7 @@ jobs:
         run: echo $GITHUB_EVENT_PATH
 
   call-workflow:
-    uses: ./.github/workflows/reusable.yml@main
+    uses: ./.github/workflows/reusable.yml
     permissions:
       contents: read
       pull-requests: write
