@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Store Pr json values
         run: PRVALVAL=$(cat $GITHUB_EVENT_PATH | jq -r '.pull_request')
+      - name: Echo values of pr json
+        run: cat $GITHUB_EVENT_PATH
       - name: Echo it
         run: echo $PRVALVAL
 
