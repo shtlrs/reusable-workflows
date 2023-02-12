@@ -26,9 +26,6 @@ jobs:
   call-workflow:
     needs: github_event_path
     uses: ./.github/workflows/status_embed.yml
-    permissions:
-      contents: read
-      pull-requests: write
     
     with:
       pr_author: ${{needs.github_event_path.outputs.pr_author}}
