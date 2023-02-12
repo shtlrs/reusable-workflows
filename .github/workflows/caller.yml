@@ -2,9 +2,16 @@ name: Call a reusable workflow
 
 on:
   pull_request:
-    branches: main
+    branches: [main]
 
 jobs:
+
+  github_event_path:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo
+        run: echo $GITHUB_EVENT_PATH
+
   call-workflow:
     uses: .github/workflows/reusable.yml@main
     permissions:
