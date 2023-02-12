@@ -9,22 +9,12 @@ jobs:
   github_event_path:
     runs-on: ubuntu-latest
     steps:
-      - name: Echo value of GITHUB_EVENT_PATH
-        run: echo $GITHUB_EVENT_PATH
-      - name: Echo PR data
-        run: cat $GITHUB_EVENT_PATH | jq -r '.pull_request'
-      - name: Dump pr data into a file
-        run: cat $GITHUB_EVENT_PATH | jq -r '.pull_request' > test.json
-      - name: list files
-        run: ls
-      - name: Read files
-        run: cat test.json
-      - name: Store PR related data in `pull_request_json`
-        run: prss=$(cat $GITHUB_EVENT_PATH | jq '.pull_request')
+      - name: Store PR related data in `myawesomevariable`
+        run: myawesomevariable=$(cat $GITHUB_EVENT_PATH | jq -r '.pull_request')
       - name: Echo values of PR data
         run: |
-          echo $prss
-          [ -z "$prss" ] && exit 1
+          echo $myawesomevariable
+          [ -z "$myawesomevariable" ] && exit 1
 
   #call-workflow:
     #uses: ./.github/workflows/reusable.yml
