@@ -9,17 +9,19 @@ jobs:
   github_event_path:
     runs-on: ubuntu-latest
     steps:
-      - name: Echo
-        run: echo $GITHUB_EVENT_PATH
+      - name: Store Pr json values
+        run: PRVALVAL = $(cat $GITHUB_EVENT_PATH | jq -r '.pull_request')
+      - name: Echo it
+        run: echo $PRVALVAL
 
-  call-workflow:
-    uses: ./.github/workflows/reusable.yml
-    permissions:
-      contents: read
-      pull-requests: write
+  #call-workflow:
+    #uses: ./.github/workflows/reusable.yml
+    #permissions:
+      #contents: read
+      #pull-requests: write
     
-    with:
-      config-path: .github/labeler.yml
-      pull-request-json: $(cat $GITHUB_EVENT_PATH | jq -r '.pull_request')
-    secrets:
-      token: ${{ secrets.GITHUB_TOKEN }}
+    #with:
+      #config-path: .github/labeler.yml
+      #pull-request-json: $(cat $GITHUB_EVENT_PATH | jq -r '.pull_request')
+    #secrets:
+      #token: ${{ secrets.GITHUB_TOKEN }}
