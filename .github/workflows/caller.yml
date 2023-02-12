@@ -16,7 +16,7 @@ jobs:
       - name: Dump it
         run: echo $PRVALVAL > test.json
       - name: echo it
-        run: cat $test.json
+        run: cat test.json
 
   #call-workflow:
     #uses: ./.github/workflows/reusable.yml
