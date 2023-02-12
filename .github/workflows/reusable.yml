@@ -4,21 +4,25 @@ name: Reusable workfloww
 on:
   workflow_call:
     inputs:
-      config-path:
+      pr_author:
         required: true
         type: string
-      pull-request-json:
+      pr_title:
         required: true
         type: string
-    secrets:
-      token:
+      pr_source:
         required: true
+        type: string
+      pr_number:
+        required: true
+        type: string
+      
 
 jobs:
-  triage:
+  read_heritage:
     runs-on: ubuntu-latest
     steps:
       - name: first
-        run: echo ${{ inputs.config-path }}
+        run: echo ${{ inputs.pr_author }}
       - name: second
-        run: echo ${{ pull-request-json }}
+        run: echo ${{ inputs.pr_title }}
