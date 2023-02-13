@@ -2,6 +2,10 @@ name: Status Embed
 
 on:
   workflow_call:
+    inputs:
+      job_status:
+        required: true
+        type: string
     secrets:
       webhook_token:
         required: true
@@ -56,7 +60,7 @@ jobs:
           workflow_name: ${{ github.workflow }}
           run_id: ${{ github.run_id }}
           run_number: ${{ github.run_number }}
-          status: ${{ failure() || cancelled() || success() }}
+          status: ${{ inputs.job_status }}
           actor: ${{ github.actor }}
           repository:  ${{ github.repository }}
           ref: ${{ github.ref }}
