@@ -71,14 +71,13 @@ jobs:
           workflow_name: ${{ github.workflow }}
           run_id: ${{ github.run_id }}
           run_number: ${{ github.run_number }}
-          #status: ${{ github.event.workflow_run.conclusion }}
           status: ${{ inputs.job_status }}
           actor: ${{ github.actor }}
           repository:  ${{ github.repository }}
           ref: ${{ github.ref }}
           sha: ${{ github.sha }}
 
-          pr_author_login: ${{ inputs.pr_author }}
-          pr_number: ${{ inputs.pr_number }}
-          pr_title: ${{ inputs.pr_title }}
-          pr_source: ${{ inputs.pr_source }}
+          pr_author_login: ${{ github.event.pull_request.user.login}}
+          pr_number: ${{ github.event.pull_request.number }}
+          pr_title: ${{ github.event.pull_request.title }}
+          pr_source: ${{ github.event.pull_request.head.label }}
