@@ -2,10 +2,6 @@ name: Status Embed
 
 on:
   workflow_call:
-    inputs:
-      job_status:
-        required: true
-        type: string
     secrets:
       webhook_token:
         required: true
@@ -47,7 +43,7 @@ jobs:
       # more information and we can fine tune when we actually want
       # to send an embed.
       - name: First step
-        run: echo ${{ inputs.job_status }}
+        run: echo ${{ steps.step1.outcome }}
       - name: GitHub Actions Status Embed for Discord
         uses: SebastiaanZ/github-status-embed-for-discord@v0.2.1
         with:
