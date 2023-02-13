@@ -15,6 +15,9 @@ on:
       pr_number:
         required: true
         type: string
+      job_status:
+        required: true
+        type: string
     secrets:
       webhook_token:
         required: true
@@ -55,6 +58,8 @@ jobs:
       # standard embeds that Discord sends. This embed will contain
       # more information and we can fine tune when we actually want
       # to send an embed.
+      - name: First step
+        run: echo ${{ inputs.job_status }}
       - name: GitHub Actions Status Embed for Discord
         uses: SebastiaanZ/github-status-embed-for-discord@v0.2.1
         with:
@@ -67,7 +72,7 @@ jobs:
           run_id: ${{ github.run_id }}
           run_number: ${{ github.run_number }}
           #status: ${{ github.event.workflow_run.conclusion }}
-          status: "success"
+          status: ${{ inputs.job_status }}
           actor: ${{ github.actor }}
           repository:  ${{ github.repository }}
           ref: ${{ github.ref }}
