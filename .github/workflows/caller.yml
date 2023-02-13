@@ -17,9 +17,8 @@ jobs:
   call-workflow:
 
     uses: ./.github/workflows/status_embed.yml
-    needs: first
     with:
-      job_status: ${{ needs.first.result}}
+      job_status: ${{ jobs.first.result}}
     secrets:
       webhook_token: ${{ secrets.GHA_WEBHOOK_TOKEN }}
       
