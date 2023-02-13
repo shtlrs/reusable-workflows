@@ -8,29 +8,20 @@ jobs:
 
   first:
     outputs:
-      job_status: ${{ steps.step3.outputs.job_status }}
+      outcome: ${{ job.status }}
+    continue-on-error: true
     runs-on: ubuntu-latest
     steps:
       - id: step2
         run: echo hello
       - id: step1
-        run: exit -1
-        continue-on-error: true
-      - id: step3
-        run: |
-          if [[ ${{ success() }} ]]
-          then
-            echo "job_status='success'" >> $GITHUB_OUTPUT
-          else
-            echo "job_status='failure'" >> $GITHUB_OUTPUT
-          fi
-    
+        run: exit -1    
 
   call-workflow:
     needs: first
     uses: ./.github/workflows/status_embed.yml
     with:
-      job_status: ${{ needs.first.outputs.job_status }}
+      job_status: ${{ needs.first.outputs.outcome }}
     secrets:
       webhook_token: ${{ secrets.GHA_WEBHOOK_TOKEN }}
       
