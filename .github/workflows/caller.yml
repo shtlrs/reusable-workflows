@@ -8,10 +8,10 @@ jobs:
 
   first:
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - run: echo hello
-      - run: exit 1
-    continue-on-error: true
+      - run: exit -1
 
   call-workflow:
     uses: ./.github/workflows/status_embed.yml
