@@ -13,6 +13,7 @@ concurrency:
 jobs:
 
   status_embed:
+    continue-on-error: true
     # We need to send a status embed whenever the workflow
     # sequence we're running terminates. There are a number
     # of situations in which that happens:
