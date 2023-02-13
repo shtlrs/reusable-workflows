@@ -12,10 +12,10 @@ jobs:
     steps:
       - id: step2
         run: echo hello
-      - id: step3
-        run: echo ${{ steps.step2.conclusion }}
       - id: step1
         run: exit -1
+      - id: step3
+        run: echo ${{ steps.step1.conclusion }}
     
 
   call-workflow:
