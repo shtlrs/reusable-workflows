@@ -12,6 +12,7 @@ jobs:
     steps:
       - id: step1
         run: exit -1
+      - run: echo ${{ toJSON(jobs) }}
 
   call-workflow:
     needs: first
