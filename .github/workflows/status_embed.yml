@@ -3,18 +3,6 @@ name: Status Embed
 on:
   workflow_call:
     inputs:
-      pr_author:
-        required: true
-        type: string
-      pr_title:
-        required: true
-        type: string
-      pr_source:
-        required: true
-        type: string
-      pr_number:
-        required: true
-        type: string
       job_status:
         required: true
         type: string
