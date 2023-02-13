@@ -29,9 +29,9 @@ jobs:
     uses: ./.github/workflows/status_embed.yml
     
     with:
-      pr_author: ${{ github.event.pull_request.user.name  }}
-      pr_number: ${{ github.event.pull_request.avatar_urlstring }}
-      pr_title: ${{ github.event.pull_request.name }}
-      pr_source: ${{ github.event.pull_request.user.name }}
+      pr_author: ${{ github.event.pull_request.user.name }}
+      pr_number: ${{ github.event.pull_request.number }}
+      pr_title: ${{ github.event.pull_request.title }}
+      pr_source: ${{ github.event.pull_request.head.label }}
     secrets:
       webhook_token: ${{ secrets.GHA_WEBHOOK_TOKEN }}
