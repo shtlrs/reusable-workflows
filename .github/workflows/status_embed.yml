@@ -43,9 +43,7 @@ jobs:
       # more information and we can fine tune when we actually want
       # to send an embed.
       - name: First step
-        run: | 
-          echo ${{ toJSON(steps) }}
-          echo ${{ steps.step1.outcome }}
+        run: hello
       - name: GitHub Actions Status Embed for Discord
         uses: SebastiaanZ/github-status-embed-for-discord@v0.2.1
         with:
@@ -57,7 +55,7 @@ jobs:
           workflow_name: ${{ github.workflow }}
           run_id: ${{ github.run_id }}
           run_number: ${{ github.run_number }}
-          status: ${{ inputs.job_status }}
+          status: ${{ failure() || cancelled() || success() }}
           actor: ${{ github.actor }}
           repository:  ${{ github.repository }}
           ref: ${{ github.ref }}
