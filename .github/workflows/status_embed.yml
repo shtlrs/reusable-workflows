@@ -43,7 +43,9 @@ jobs:
       # more information and we can fine tune when we actually want
       # to send an embed.
       - name: First step
-        run: echo ${{ steps.step1.outcome }}
+        run: | 
+          echo ${{ toJSON(steps) }}
+          echo ${{ steps.step1.outcome }}
       - name: GitHub Actions Status Embed for Discord
         uses: SebastiaanZ/github-status-embed-for-discord@v0.2.1
         with:
