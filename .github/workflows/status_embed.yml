@@ -15,6 +15,9 @@ on:
       pr_number:
         required: true
         type: string
+    secrets:
+      webhook_token:
+        required: true
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -57,8 +60,7 @@ jobs:
         with:
           # Our GitHub Actions webhook
           webhook_id: '1073334907755053056'
-          #webhook_token: ${{ secrets.GHA_WEBHOOK_TOKEN }}
-          webhook_token: cgs2aBTPOspOLZgaXkvCGEH_1BJZ-88aLkUIwA_YpfaEflY5r61DG0lY4adCN7D5FroK
+          webhook_token: ${{ secrets.webhook_token }}
 
           # Workflow information
           workflow_name: ${{ github.workflow }}
