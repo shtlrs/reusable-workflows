@@ -7,13 +7,13 @@ on:
 jobs:
 
   first:
-    continue-on-error: true
     runs-on: ubuntu-latest
     steps:
       - id: step2
         run: echo hello
       - id: step1
         run: exit -1
+        continue-on-error: true
       - id: step3
         run: echo ${{ steps.step1.conclusion }}
     
