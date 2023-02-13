@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: step2
-        run: echo ${{ toJSON(jobs) }}
+        run: echo hello
       - id: step3
         run: echo ${{ steps.step2.conclusion }}
       - id: step1
