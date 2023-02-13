@@ -7,18 +7,17 @@ on:
 jobs:
 
   first:
+    continue-on-error: true
     runs-on: ubuntu-latest
     steps:
       - id: step1
-        run: echo hello
-      - id: step2
         run: exit -1
 
   call-workflow:
-
+    needs: first
     uses: ./.github/workflows/status_embed.yml
     with:
-      job_status: ${{ jobs.first.result}}
+      job_status: ${{ need.first.result}}
     secrets:
       webhook_token: ${{ secrets.GHA_WEBHOOK_TOKEN }}
       
