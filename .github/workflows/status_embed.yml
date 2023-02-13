@@ -15,6 +15,9 @@ on:
       pr_number:
         required: true
         type: string
+    secrets:
+      webhook_token:
+        required: true
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

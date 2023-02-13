@@ -33,3 +33,5 @@ jobs:
       pr_number: ${{needs.github_event_path.outputs.pr_number}}
       pr_title: ${{needs.github_event_path.outputs.pr_title}}
       pr_source: ${{needs.github_event_path.outputs.pr_source}}
+    secrets:
+      webhook_token: ${{ secrets.GHA_WEBHOOK_TOKEN }}
