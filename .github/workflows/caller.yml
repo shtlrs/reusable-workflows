@@ -20,9 +20,9 @@ jobs:
         run: |
           if [[ ${{ success() }} ]]
           then
-            echo job_status=success
+            echo job_status='success'
           else
-            echo job_status=failure
+            echo job_status='failure'
           fi
     
 
