@@ -6,26 +6,7 @@ on:
 
 jobs:
 
-  github_event_path:
-    runs-on: ubuntu-latest
-    outputs:
-      pr_author: ${{ steps.extract_pr_data.outputs.pr_author }}
-      pr_number: ${{ steps.extract_pr_data.outputs.pr_number }}
-      pr_title: ${{ steps.extract_pr_data.outputs.pr_title }}
-      pr_source: ${{ steps.extract_pr_data.outputs.pr_source }}
-
-    steps:
-      - id: extract_pr_data
-        name: Extract pull request related data
-        run: | 
-          (cat $GITHUB_EVENT_PATH | jq -r '.pull_request') > pull_request_payload.json
-          echo "pr_author=$(jq -r '.user.login // empty' pull_request_payload.json)" >> $GITHUB_OUTPUT
-          echo "pr_number=$(jq -r '.number // empty' pull_request_payload.json)" >> $GITHUB_OUTPUT
-          echo "pr_title=$(jq -r '.title // empty' pull_request_payload.json)" >> $GITHUB_OUTPUT
-          echo "pr_source=$(jq -r '.head.label // empty' pull_request_payload.json)" >> $GITHUB_OUTPUT
-
   call-workflow:
-    needs: github_event_path
     uses: ./.github/workflows/status_embed.yml
     
     with:
