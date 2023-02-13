@@ -10,9 +10,13 @@ jobs:
     continue-on-error: true
     runs-on: ubuntu-latest
     steps:
+      - id: step2
+        run: echo ${{ toJSON(jobs) }}
+      - id: step3
+        run: echo ${{ steps.step2.conclusion }}
       - id: step1
         run: exit -1
-      - run: echo ${{ toJSON(jobs) }}
+    
 
   call-workflow:
     needs: first
