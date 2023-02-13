@@ -9,7 +9,6 @@ jobs:
   first:
     outputs:
       outcome: ${{ job.status }}
-    continue-on-error: true
     runs-on: ubuntu-latest
     steps:
       - id: step2
