@@ -19,7 +19,7 @@ jobs:
   call-workflow:
     needs: first
     if: always()
-    uses: shtlrs/.github/.github/workflows/status_embed.yml@master
+    uses: shtlrs/.github/.github/workflows/status_embed.yaml@master
     with:
       job_status: ${{ needs.first.outputs.outcome }}
     secrets:
