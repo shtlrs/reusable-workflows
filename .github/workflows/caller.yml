@@ -23,4 +23,3 @@ jobs:
       job_status: ${{ needs.first.outputs.outcome }}
     secrets:
       webhook_token: ${{ secrets.GHA_WEBHOOK_TOKEN }}
-      
