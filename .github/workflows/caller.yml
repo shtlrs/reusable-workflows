@@ -14,10 +14,11 @@ jobs:
       - id: step2
         run: echo hello
       - id: step1
-        run: exit -1    
+        run: exit -1 
 
   call-workflow:
     needs: first
+    if: always()
     uses: ./.github/workflows/status_embed.yml
     with:
       job_status: ${{ needs.first.outputs.outcome }}
