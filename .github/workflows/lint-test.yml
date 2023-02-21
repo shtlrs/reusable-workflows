@@ -1,0 +1,24 @@
+name: Lint and Test
+
+on:
+  workflow_call
+
+jobs:
+  lint:
+    name: Runs Flake8 and Pytest
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Python Dependencies
+        uses: HassanAbouelela/actions/setup-python@setup-python_v1.4.0
+        with:
+          python_version: "3.11"
+          install_args: "--with=dev"
+
+      - name: Run flake8
+        run: flake8 adder
+
+      - name: Run pytest
+        run: pytest tests/
