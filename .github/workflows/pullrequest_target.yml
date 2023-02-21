@@ -1,0 +1,20 @@
+name: Pullrequest Created
+
+on:
+  pull_request_target:
+    branches: main
+
+jobs:
+    # Send an informational status embed to Discord instead of the
+    # standard embeds that Discord sends. This embed will contain
+    # more information and we can fine tune when we actually want
+    # to send an embed.
+    - name: GitHub Actions Status Embed for Discord
+      uses: SebastiaanZ/github-status-embed-for-discord@v0.2.1
+      with:
+        # Our GitHub Actions webhook
+        webhook_id: '784184528997842985'
+        webhook_token: ${{ secrets.GHA_WEBHOOK_TOKEN }}
+        status: "success"
+
+        workflow_name: "HELLO THERE"
