@@ -1,9 +1,0 @@
-name: Pullrequest
-
-on:
-  pull_request:
-    branches: main
-
-jobs:
-  lint-test:
-    uses: ./.github/workflows/lint-test.yml
