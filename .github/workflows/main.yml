@@ -1,5 +1,8 @@
 name: CI
 
+env:
+  IS_MAIN_BRANCH: ${{ github.ref == github.event.repository.default_branch }}
+
 on:
   push:
     branches:
@@ -13,6 +16,12 @@ jobs:
     steps:
       - name: "Echo ref"
         run: echo ${{ github.ref }} && echo ${{ github.event.repository.default_branch }}
+
+  gh1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Echo IS_MAIN_BRANCH"
+        run: echo $IS_MAIN_BRANCH
 
   gh2:
     runs-on: ubuntu-latest
