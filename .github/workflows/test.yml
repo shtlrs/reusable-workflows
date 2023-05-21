@@ -1,0 +1,20 @@
+name: Get Default Branch Commit Hash
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get Default Branch Commit Hash
+        id: commit_hash
+        run: |
+          COMMIT_HASH=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}/branches/main" | \
+            jq -r '.commit.sha')
+
+          echo "The commit hash of the default branch is $COMMIT_HASH"
