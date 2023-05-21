@@ -16,3 +16,14 @@ jobs:
 
       - name: "Echo github"
         run: echo ${{ toJSON(github) }}
+  gh2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Echo github ctx"
+        run: echo ${{ toJson(github) }}
+
+  gh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Echo github ctx"
+        run: echo ${{ toJSON(github) }}
