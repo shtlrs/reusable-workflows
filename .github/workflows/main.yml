@@ -14,16 +14,9 @@ jobs:
       - name: "Echo ref"
         run: echo ${{ github.ref }} && echo ${{ github.event.repository.default_branch }}
 
-      - name: "Echo github"
-        run: echo ${{ toJSON(github) }}
   gh2:
     runs-on: ubuntu-latest
     steps:
       - name: "Echo github ctx"
-        run: echo ${{ toJson(github) }}
+        run: echo ${{ toJson(github.event.repository) }}
 
-  gh:
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Echo github ctx"
-        run: echo ${{ toJSON(github) }}
