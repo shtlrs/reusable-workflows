@@ -29,3 +29,9 @@ jobs:
       - name: "Echo sha"
         run: echo ${{ github.sha}}
 
+  gh-repo-id:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Echo sha"
+        run: echo ${{ github.repository_id}}
+
