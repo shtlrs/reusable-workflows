@@ -13,3 +13,6 @@ jobs:
     steps:
       - name: "Echo ref"
         run: echo ${{ github.ref }} && echo ${{ github.event.repository.default_branch }}
+
+      - name: "Echo github"
+        run: echo ${{ toJSON(github) }}
