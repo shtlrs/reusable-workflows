@@ -26,6 +26,6 @@ jobs:
   gh2:
     runs-on: ubuntu-latest
     steps:
-      - name: "Echo github ctx"
-        run: echo ${{ toJson(github.event.repository) }}
+      - name: "Echo sha"
+        run: echo ${{ github.sha}}
 
