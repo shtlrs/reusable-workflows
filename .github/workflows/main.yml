@@ -1,7 +1,7 @@
 name: CI
 
 env:
-  IS_MAIN_BRANCH: ${{ github.ref == github.event.repository.default_branch }}
+  IS_MAIN_BRANCH: github.ref == github.event.repository.default_branch
 
 on:
   push:
@@ -22,12 +22,6 @@ jobs:
     steps:
       - name: "Echo IS_MAIN_BRANCH"
         run: echo $IS_MAIN_BRANCH
-
-  gh2:
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Echo sha"
-        run: echo ${{ github.sha }}
 
   gh-repo-id:
     runs-on: ubuntu-latest
